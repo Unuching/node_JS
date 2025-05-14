@@ -24,13 +24,20 @@ const addTask = (task) => {
   saveTasks(tasks);
   console.log("Task added:" + task);
 };
+
+const listTasks = () => {
+  const tasks = loadTasks();
+  tasks.forEach((task, index) => {
+    console.log(`${index + 1}- ${task.task}`);
+  });
+};
 const command = process.argv[2];
 const argument = process.argv[3];
 
 if (command === "add") {
   addTask(argument);
 } else if (command === "list") {
-  listTask();
+  listTasks();
 } else if (command === "remove") {
   removeTask(parseInt(argument));
 } else {
